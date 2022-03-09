@@ -1,0 +1,68 @@
+<script>
+    $(document).ready(function () {
+        var width = $("body").width();
+        var height = $("body").height();
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(width, height);
+        document.body.appendChild(renderer.domElement);
+
+
+        starGeo = new THREE.Geometry();
+        for (let i = 0; i < 6000; i++) {
+            let star = new THREE.Vector3(
+                Math.random() * 600 - 300,
+                Math.random() * 600 - 300,
+                Math.random() * 600 - 300
+            );
+            star.velocity = 0;
+            star.acceleration = 0.002;
+            starGeo.vertices.push(star);
+        }
+
+        let sprite = new THREE.TextureLoader().load('/static/portfolio/pictures/white-star-icon.png');
+        let starMaterial = new THREE.PointsMaterial({
+            color: 0xaaaaaa,
+            size: 0.7,
+            map: sprite
+        });
+        stars = new THREE.Points(starGeo, starMaterial);
+        scene.add(stars);
+
+        camera.position.z = 1;
+        camera.rotation.x = Math.PI / 2;
+
+        function animate() {
+            starGeo.vertices.forEach(p => {
+                p.velocity += p.acceleration
+                p.y -= p.velocity;
+
+                if (p.y < -200) {
+                    p.y = 200;
+                    p.velocity = 0;
+                }
+            });
+            starGeo.verticesNeedUpdate = true;
+            stars.rotation.y += 0.002;
+
+            requestAnimationFrame(animate);
+
+            renderer.render(scene, camera);
+        };
+
+        animate();
+
+        window.addEventListener('resize', onWindowResize);
+
+        function onWindowResize() {
+
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize(width, height);
+
+        }
+    });
+</script>

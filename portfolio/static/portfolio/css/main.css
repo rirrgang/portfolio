@@ -1,12 +1,12 @@
 body {
-    overflow: hidden;
-    margin: 0;
-    height: 100%;
-    /*background-image: url(background.png);*/
+    /* overflow: hidden; */
+    margin: 0 auto;
+    /* background-image: url('/static/portfolio/pictures/background.png'); */
     background-color: black;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow-x: hidden;
 }
 
 header {
@@ -62,7 +62,6 @@ header {
     color: white;
     font-size: 40px;
     text-align: center;
-    width: 200px;
     line-height: 80px;
     margin-left: 10px;
     transition: 500ms;
@@ -83,9 +82,10 @@ header {
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
     z-index: 1;
     top: 76px;
+    box-shadow: #850303 4px 4px 0px, #840000 -4px 4px;
 }
 
 
