@@ -40,21 +40,17 @@ header {
     /* margin-left: 30px; */
     /* width: 100%; */
     position: absolute;
+    transition: 500ms;
 }
 
-.navigation-logo-link:hover {
+.navigation-logo-container:hover {
     background-color: #202020;
 }
 
-.navigation-logo-link:hover .navigation-logo {
+/* .navigation-logo-link:hover .navigation-logo {
     transform: rotate(360deg) scale(1.1);
     transition: 500ms;
-}
-
-.navigation-logo-link:hover .navigation-logo-name {
-    transform: rotate(2deg) scale(1.1);
-    transition: 500ms;
-}
+} */
 
 .nav-logo-img {
     width: inherit;
@@ -102,7 +98,7 @@ header {
     /*height: 80px;*/
     opacity: 1;
     right: 30px;
-    position: relative;
+    /* position: relative; */
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -124,13 +120,10 @@ header {
     background-color: #202020;
 }
 
-.navigation-list-entry-name:hover {
-    /* transform: rotate(2deg) scale(1.1); */
-    transition: 500ms;
-}
 
-.navigation-list-entry-name:hover {
+.navigation-list-entry-name:hover{
     background-color: #202020;
+    transition: 500ms;
 }
 
 
