@@ -14,14 +14,79 @@
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"
         integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
     <script src="{% static 'portfolio/scripts/main.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.js"
+        integrity="sha512-iaZ8D6RzguOWQ+B5SLJCHPid3/2UaVIFnsNJHy068pv3r5G6kYOe+XufLqd6qNrQmaHeYR0iVyu2xkXB2llnMg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.module.js"
+        integrity="sha512-PXon5ZCv1wqUONrT5oeawVTJ+Z579HYAHMQOp7IjnJnnZPIxba28Fus++EGc3m/oIXSQIRW3d5b0d7mGkmkxKw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--<script type="module" src="{% static '/portfolio/scripts/work3js.js'%}"></script>-->
     <title>RI Visuals</title>
 </head>
 
-<body {% block bodybackground %}{% endblock %} >
-   
+<body {% block bodybackground %}{% endblock %}>
+
     {% include 'portfolio//html/navigation.html' %}
     {% block content %}{% endblock %}
-   
+
+    <script>
+        $(document).ready(function () {
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+            const renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+
+            starGeo = new THREE.Geometry();
+            for (let i = 0; i < 6000; i++) {
+                let star = new THREE.Vector3(
+                    Math.random() * 600 - 300,
+                    Math.random() * 600 - 300,
+                    Math.random() * 600 - 300
+                );
+                star.velocity = 0;
+                star.acceleration = 0.002;
+                starGeo.vertices.push(star);
+            }
+
+            let sprite = new THREE.TextureLoader().load('/static/portfolio/pictures/white-star-icon.png');
+            let starMaterial = new THREE.PointsMaterial({
+                color: 0xaaaaaa,
+                size: 0.7,
+                map: sprite
+            });
+            stars = new THREE.Points(starGeo, starMaterial);
+            scene.add(stars);
+
+            camera.position.z = 1;
+            camera.rotation.x = Math.PI/2;
+
+            function animate() {
+                starGeo.vertices.forEach(p => {
+                    p.velocity += p.acceleration
+                    p.y -= p.velocity;
+
+                    if (p.y < -200) {
+                        p.y = 200;
+                        p.velocity = 0;
+                    }
+                });
+                starGeo.verticesNeedUpdate = true;
+                stars.rotation.y +=0.002;
+
+                requestAnimationFrame(animate);
+
+                renderer.render(scene, camera);
+            };
+
+            animate();
+        });
+    </script>
+    });
+    </script>
+
 </body>
 
 </html>
