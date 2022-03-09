@@ -1,0 +1,52 @@
+{% extends 'portfolio/html/base.html' %}
+{% load static %}
+{% block content %}
+<div class="video-content">
+
+    <!------------------------------------------ LEFT SIDE -------------------------------------------------->
+    <div class="video-list-container">
+        <div class="video-list-entry-container">
+            <img class="video-list-entry-img" src="logo3.png" alt="">
+            <source data-src-name="Krak des Chevaliers - Rotation" src="Crusader_Castle_Rotation_v2.mp4"
+                type="video/mp4">
+        </div>
+        <div class="video-list-entry-container">
+            <img class="video-list-entry-img" src="logo3.png" alt="">
+            <source data-src-name="Krak des Chevaliers - Modeling Timelapse" src="Crusader_Castle.mp4" type="video/mp4">
+        </div>
+        <div class="video-list-entry-container">
+            <img class="video-list-entry-img" src="logo3.png" alt="">
+        </div>
+    </div>
+
+    <!------------------------------------------ CENTER -------------------------------------------------->
+    <div class="video-container">
+
+        <div class="main-video-container">
+            <div class="video-play-btn-container">
+                <div class="video-play-btn-border">
+                    <button class="video-play-btn"><i id="video-play-btn-icon" class="fa-solid fa-pause"></i></button>
+                </div>
+            </div>
+            <video muted id="main-video">
+                <source id="main-video-source" src="Crusader_Castle.mp4" type="video/mp4">
+                <!--<source src="Showcase_Prototype.mp4" type="video/mp4"> -->
+            </video>
+        </div>
+        <span class="video-title">Krak des Chevaliers - Modeling Timelapse</span>
+    </div>
+
+    <!------------------------------------------ RIGHT SIDE -------------------------------------------------->
+    <div class="video-list-container">
+        <div class="video-list-entry-container">
+            <img class="video-list-entry-img" src="logo3.png" alt="">
+        </div>
+        <div class="video-list-entry-container">
+            <img class="video-list-entry-img" src="logo3.png" alt="">
+        </div>
+        <div class="video-list-entry-container">
+            <img class="video-list-entry-img" src="logo3.png" alt="">
+        </div>
+    </div>
+</div>
+{% endblock %}

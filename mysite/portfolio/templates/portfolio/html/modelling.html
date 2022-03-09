@@ -1,0 +1,51 @@
+{% extends 'portfolio/html/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<script type="module" src="work3js.js"></script>
+<script type="importmap">
+        {
+            "imports": {
+                "three": "./three/build/three.module.js"
+            }
+        }
+    </script>
+<div class="video-content" style="margin-top: 10px;">
+    <!------------------------------------------ LEFT SIDE -------------------------------------------------->
+    <div class="video-list-container">
+        <div class="video-list-entry-container">
+            <img class="video-list-entry-img" src="logo3.png" alt="">
+        </div>
+        <div class="video-list-entry-container">
+            <img class="video-list-entry-img" src="logo3.png" alt="">
+        </div>
+        <div class="video-list-entry-container">
+            <img class="video-list-entry-img" src="logo3.png" alt="">
+        </div>
+    </div>
+
+    <!------------------------------------------ CENTER -------------------------------------------------->
+
+    <div class="webglRenderer-container">
+        <div class="main-webglRenderer-container">
+            <div id="webgl" class="webglRenderer-element"></div>
+
+        </div>
+        <span class="video-title">Cube</span>
+    </div>
+
+    <!------------------------------------------ RIGHT SIDE -------------------------------------------------->
+    <div class="video-list-container">
+        <div class="video-list-entry-container">
+            <img class="video-list-entry-img" src="logo3.png" alt="">
+        </div>
+        <div class="video-list-entry-container">
+            <img class="video-list-entry-img" src="logo3.png" alt="">
+        </div>
+        <div class="video-list-entry-container">
+            <img class="video-list-entry-img" src="logo3.png" alt="">
+        </div>
+    </div>
+</div>
+{% endblock %}

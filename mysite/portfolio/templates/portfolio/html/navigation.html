@@ -1,0 +1,69 @@
+<header>
+    {% load static %}
+    <!------------------------------------------ NAVIGATION -------------------------------------------------->
+    <div class="navigation">
+        <div class="navigation-logo-container">
+            <a class="navigation-logo-link" href="{% url 'home' %}" style="text-decoration: none;">
+                <div class="navigation-logo">
+                    <img src="{% static 'portfolio/pictures/logo3.png' %}" alt="" class="nav-logo-img">
+                </div>
+                <span class="navigation-logo-name">RI Visuals</span>
+            </a>
+        </div>
+        <input type="checkbox" id="menu-btn" style="display: none;">
+        <div class="navigation-hoz">
+            <label class="navigation-hamburger-menu" for="menu-btn">
+                <div class="menu-btn-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </label>
+
+            </a>
+            <div class="navigation-list">
+                <!--HOME-->
+                <div class="navigation-list-entry {% if nav == 'home' %}navigation-active{% endif %}"><a
+                        href="{% url 'home' %}" class="navigation-list-entry-name">Home</a>
+                </div>
+                <!--ABOUT-->
+                <div class="navigation-list-entry {% if nav == 'about' %}navigation-active{% endif %}"><a
+                        href="{% url 'about' %}" class="navigation-list-entry-name">About</a>
+                </div>
+                <!--PROJECTS-->
+                <div
+                    class="navigation-list-entry nav-submenu-btn {% if nav == 'projects' %}navigation-active{% endif %}">
+                    <a href="{% url 'projects' %}" class="navigation-list-entry-name">Projects <i
+                            class="fa-solid fa-caret-down"></i></a>
+                    <div class="nav-submenu">
+                        <!--VIDEOS-->
+                        <div class="navigation-list-entry {% if nav == 'videos' %}navigation-active{% endif %}"><a
+                                href="{% url 'videos' %}" class="navigation-list-entry-name">Videos</a>
+                        </div>
+                        <!--MODELLING-->
+                        <div class="navigation-list-entry {% if nav == 'modelling' %}navigation-active{% endif %}"><a
+                                href="{% url 'modelling' %}" class="navigation-list-entry-name">3D Modelling</a>
+                        </div>
+                        <!--GAMES-->
+                        <div class="navigation-list-entry {% if nav == 'games' %}navigation-active{% endif %}"><a
+                                href="{% url 'games' %}" class="navigation-list-entry-name">Games</a>
+                        </div>
+                        <!--CODING-->
+                        <div class="navigation-list-entry {% if nav == 'coding' %}navigation-active{% endif %}"><a
+                                href="{% url 'coding' %}" class="navigation-list-entry-name">Coding</a>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <!--CONTACT-->
+                <div class="navigation-list-entry {% if nav == 'contact' %}navigation-active{% endif %}"><a
+                        href="{% url 'contact' %}" class="navigation-list-entry-name">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-line"></div>
+</header>

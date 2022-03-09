@@ -1,0 +1,29 @@
+{% extends 'portfolio/html/base.html' %}
+{% load static %}
+{% block bodybackground %}style="background: url({% static '/portfolio/pictures/background.png' %}); background-repeat: no-repeat; background-size: cover;"{% endblock %}
+{% block content %}
+<div class="content">
+    <div class="content-title-container">
+        <span class="content-title">ABOUT</span>
+        <div class="content-title-bottom-line"></div>
+    </div>
+
+    <img class="about-logo" src="{% static 'portfolio/pictures/about_logo2.png' %}" alt="">
+
+    <div class="content-title-container">
+        <span class="content-title" style="font-size: 50px;">Robert Irrgang</span>
+        <div class="content-title-bottom-line" style="width: 250px; "></div>
+    </div>
+
+    <div class="content-text-container">
+        <p class="content-text-para">Hi my name is Robert, and I'm currently a master student of applied computer
+            science at: <br><a class="link" href="https://www.hs-schmalkalden.de/de.html" target="_blank">Schmalkalden
+                University of Applied Sciences</a>. <br><br> Also I like 3D
+            <a class="link" href="{% url 'modelling' %}">Modelling</a>,
+            <a class="link" href="{% url 'videogames' %}">Videogames</a> and
+            <a class="link" href="{% url 'coding' %}">Coding</a> :) <br><br>
+            You can <a class="link" href="{% url 'contact' %}">&gt;&gt; Contact &lt;&lt; </a> me here.
+        </p>
+    </div>
+</div>
+{% endblock %}
