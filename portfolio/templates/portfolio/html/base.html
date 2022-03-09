@@ -61,7 +61,7 @@
             scene.add(stars);
 
             camera.position.z = 1;
-            camera.rotation.x = Math.PI/2;
+            camera.rotation.x = Math.PI / 2;
 
             function animate() {
                 starGeo.vertices.forEach(p => {
@@ -74,7 +74,7 @@
                     }
                 });
                 starGeo.verticesNeedUpdate = true;
-                stars.rotation.y +=0.002;
+                stars.rotation.y += 0.002;
 
                 requestAnimationFrame(animate);
 
@@ -82,6 +82,17 @@
             };
 
             animate();
+
+            window.addEventListener('resize', onWindowResize);
+
+            function onWindowResize() {
+
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+
+                renderer.setSize(window.innerWidth, window.innerHeight);
+
+            }
         });
     </script>
     });

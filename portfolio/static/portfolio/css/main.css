@@ -1,6 +1,5 @@
 body {
-
-
+    overflow: hidden;
     margin: 0;
     height: 100%;
     /*background-image: url(background.png);*/
@@ -86,11 +85,28 @@ header {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    top:76px;
+    top: 76px;
+}
+
+
+.fa-caret-down {
+    transition: 500ms;
 }
 
 .nav-submenu-btn:hover .nav-submenu {
     display: block;
+}
+
+.nav-submenu-btn:hover .fa-caret-down{
+    transform: rotate(180deg);
+}
+
+.nav-submenu-open {
+    display: block;
+}
+
+.nav-submenu-open .fa-caret-down {
+    transform: rotate(180deg);
 }
 
 .navigation-list {
@@ -121,7 +137,7 @@ header {
 }
 
 
-.navigation-list-entry-name:hover{
+.navigation-list-entry-name:hover {
     background-color: #202020;
     transition: 500ms;
 }
@@ -279,7 +295,7 @@ header {
 /* Responsive layout - makes a one column layout instead of a two-column layout  --------------------------------------------- */
 @media (max-width: 800px) {
 
-    .nav-submenu{
+    .nav-submenu {
         position: relative;
         top: 0px;
         width: 100%;
@@ -315,6 +331,10 @@ header {
 
     #menu-btn:not(:checked)~.navigation-hoz .navigation-list {
         opacity: 0;
+    }
+
+    #menu-btn:not(:checked)~.navigation-hoz .navigation-list-entry.nav-submenu-btn {
+        display: none;
     }
 
 }

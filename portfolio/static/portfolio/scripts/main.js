@@ -139,8 +139,15 @@ $(document).ready(function () {
     menuBtn.addEventListener("click", function () {
         var menuBtnIcon = $(".menu-btn-icon").get(0);
         menuBtnIcon.classList.toggle("open");
-
     });
+
+    var navSubMenuBtn = $(".nav-submenu-btn").get(0);
+    navSubMenuBtn.addEventListener("click", function () {
+        var navSubMenu = $(".nav-submenu").get(0);
+        navSubMenu.classList.toggle("nav-submenu-open");
+        navSubMenuBtn.classList.toggle("nav-submenu-open");
+    });
+    
 
 
 
