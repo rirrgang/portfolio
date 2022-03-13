@@ -2,10 +2,14 @@
 <canvas class="threejs-canvas-ms" id="model"></canvas>
 
 <script type="module">
-    import * as THREE from 'three';
-    import { OrbitControls } from "{% static 'portfolio/scripts/libs/three/examples/jsm/controls/OrbitControls.js' %}"
-    import { GLTFLoader } from "{% static 'portfolio/scripts/libs/three/examples/jsm/loaders/GLTFLoader.js' %}"
-    import { RGBELoader } from "{% static 'portfolio/scripts/libs/three/examples/jsm/loaders/RGBELoader.js' %}";
+    //import * as THREE from 'three';
+    import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+    //import { OrbitControls } from "{% static 'portfolio/scripts/libs/three/examples/jsm/controls/OrbitControls.js' %}"
+    import { OrbitControls } from 'https://unpkg.com/three/examples/jsm/controls/OrbitControls.js';
+    //import { GLTFLoader } from "{% static 'portfolio/scripts/libs/three/examples/jsm/loaders/GLTFLoader.js' %}"
+    import { GLTFLoader } from 'https://unpkg.com/three/examples/jsm/loaders/GLTFLoader.js';
+    // import { RGBELoader } from "{% static 'portfolio/scripts/libs/three/examples/jsm/loaders/RGBELoader.js' %}";
+    import { RGBELoader } from 'https://unpkg.com/three/examples/jsm/loaders/RGBELoader.js';
 
 
     //$(document).ready(function () {
