@@ -129,7 +129,6 @@ $(document).ready(function () {
                 $(videoTitle).addClass("video-title-error");
             }
         });
-
     });
 
 

@@ -1,51 +1,95 @@
 {% extends 'portfolio/html/base.html' %}
 {% load static %}
 {% block content %}
+<!------------------------------------------ LEFT SIDE -------------------------------------------------->
 
+<!------------------------------------------ CENTER -------------------------------------------------->
 
-<script type="module" src="work3js.js"></script>
-<script type="importmap">
-        {
-            "imports": {
-                "three": "./three/build/three.module.js"
-            }
-        }
-    </script>
-<div class="video-content" style="margin-top: 10px;">
-    <!------------------------------------------ LEFT SIDE -------------------------------------------------->
-    <div class="video-list-container">
-        <div class="video-list-entry-container">
-            <img class="video-list-entry-img" src="logo3.png" alt="">
-        </div>
-        <div class="video-list-entry-container">
-            <img class="video-list-entry-img" src="logo3.png" alt="">
-        </div>
-        <div class="video-list-entry-container">
-            <img class="video-list-entry-img" src="logo3.png" alt="">
-        </div>
+<div class="webglRenderer-container">
+    <span class="video-title">Cube</span>
+    <div class="main-webglRenderer-container">
+        <!--<div id="webgl" class="webglRenderer-element"></div>-->
+        {% include 'portfolio//html/3DmodelLoader.html' %}
     </div>
 
-    <!------------------------------------------ CENTER -------------------------------------------------->
-
-    <div class="webglRenderer-container">
-        <div class="main-webglRenderer-container">
-            <div id="webgl" class="webglRenderer-element"></div>
-
-        </div>
-        <span class="video-title">Cube</span>
-    </div>
-
-    <!------------------------------------------ RIGHT SIDE -------------------------------------------------->
-    <div class="video-list-container">
-        <div class="video-list-entry-container">
-            <img class="video-list-entry-img" src="logo3.png" alt="">
-        </div>
-        <div class="video-list-entry-container">
-            <img class="video-list-entry-img" src="logo3.png" alt="">
-        </div>
-        <div class="video-list-entry-container">
-            <img class="video-list-entry-img" src="logo3.png" alt="">
+</div>
+<div class="slide-holder">
+    <div id="thumbnail-slider" class="splide">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide">
+                    <img src="{% static 'portfolio/pictures/about_logo.png' %}" data-name="test1"
+                        data-model-source="/static/portfolio/models/Swiss_Knife.gltf">
+                </li>
+                <li class="splide__slide">
+                    <img src="{% static 'portfolio/pictures/logo3.png' %}" data-name="test2"
+                        data-model-source="/static/portfolio/models/city_house.gltf">
+                </li>
+                <li class="splide__slide">
+                    <img src="{% static 'portfolio/pictures/background.png' %}" data-name="test3">
+                </li>
+            </ul>
         </div>
     </div>
 </div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        var thumbnails = new Splide('#thumbnail-slider', {
+            fixedWidth: 100,
+            fixedHeight: 60,
+            gap: 10,
+            rewind: true,
+            pagination: false,
+            cover: true,
+            isNavigation: true,
+            breakpoints: {
+                600: {
+                    fixedWidth: 60,
+                    fixedHeight: 44,
+                },
+            },
+        });
+
+        thumbnails.mount();
+    });
+</script>
+
+<style>
+    .slide-holder {
+        /* background-color: red; */
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 20px;
+        box-shadow: red 0px 0px 3px, red 0px 0px 3px, red 0px 0px 3px, red 0px 0px 4px, red 0px 0px 4px, red 0px 0px 4px;
+
+    }
+
+    .splide__slide img {
+        width: 100%;
+        height: auto;
+    }
+</style>
+
+
+<script>
+
+
+    $(function () {
+        $(".splide__slide").on("click", function () {
+            var dataName = $(this).find("img").attr("data-name");
+            var dataModelSource = $(this).find("img").attr("data-model-source");
+            console.log(dataName);
+            console.log(dataModelSource);
+            if (dataModelSource) {
+                loadModel(dataModelSource)
+            }
+
+        });
+    });
+</script>
+
+<!------------------------------------------ RIGHT SIDE -------------------------------------------------->
 {% endblock %}

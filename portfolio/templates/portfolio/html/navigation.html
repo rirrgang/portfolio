@@ -24,33 +24,45 @@
             <div class="navigation-list">
                 <!--HOME-->
                 <div class="navigation-list-entry {% if nav == 'home' %}navigation-active{% endif %}"><a
-                        href="{% url 'home' %}" class="navigation-list-entry-name"><i class="fa-solid fa-house fa-sm"></i> Home</a>
+                        href="{% url 'home' %}" class="navigation-list-link"><i
+                            class="fa-solid fa-house fa-sm"></i><span class="navigation-list-entry-name"> Home
+                        </span></a>
                 </div>
                 <!--ABOUT-->
                 <div class="navigation-list-entry {% if nav == 'about' %}navigation-active{% endif %}"><a
-                        href="{% url 'about' %}" class="navigation-list-entry-name"><i class="fa-solid fa-circle-info fa-sm"></i> About</a>
+                        href="{% url 'about' %}" class="navigation-list-link"><i
+                            class="fa-solid fa-circle-info fa-sm"></i><span
+                            class="navigation-list-entry-name"> About </span></a>
                 </div>
                 <!--PROJECTS-->
                 <div
                     class="navigation-list-entry nav-submenu-btn {% if nav == 'projects' %}navigation-active{% endif %}">
-                    <a class="navigation-list-entry-name"><i class="fa-solid fa-pen-ruler fa-sm"></i> Projects <i
-                            class="fa-solid fa-caret-down"></i></a>
+                    <a class="navigation-list-link"><i class="fa-solid fa-pen-ruler fa-sm"></i><span
+                            class="navigation-list-entry-name"> Projects </span><i class="fa-solid fa-caret-down"></i></a>
                     <div class="nav-submenu">
                         <!--VIDEOS-->
                         <div class="navigation-list-entry {% if nav == 'videos' %}navigation-active{% endif %}"><a
-                                href="{% url 'videos' %}" class="navigation-list-entry-name"><i class="fa-solid fa-video fa-sm"></i> Videos</a>
+                                href="{% url 'videos' %}" class="navigation-list-link"><i
+                                    class="fa-solid fa-video fa-sm"></i><span
+                                    class="navigation-list-entry-name"> Videos </span></a>
                         </div>
                         <!--MODELLING-->
                         <div class="navigation-list-entry {% if nav == 'modelling' %}navigation-active{% endif %}"><a
-                                href="{% url 'modelling' %}" class="navigation-list-entry-name"><i class="fa-solid fa-cube fa-sm"></i> 3D Modelling</a>
+                                href="{% url 'modelling' %}" class="navigation-list-link"><i
+                                    class="fa-solid fa-cube fa-sm"></i><span class="navigation-list-entry-name"> 3D
+                                    Modelling </span></a>
                         </div>
                         <!--GAMES-->
                         <div class="navigation-list-entry {% if nav == 'games' %}navigation-active{% endif %}"><a
-                                href="{% url 'games' %}" class="navigation-list-entry-name"><i class="fa-solid fa-gamepad fa-sm"></i> Games</a>
+                                href="{% url 'games' %}" class="navigation-list-link"><i
+                                    class="fa-solid fa-gamepad fa-sm"></i><span
+                                    class="navigation-list-entry-name"> Games </span></a>
                         </div>
                         <!--CODING-->
                         <div class="navigation-list-entry {% if nav == 'coding' %}navigation-active{% endif %}"><a
-                                href="{% url 'coding' %}" class="navigation-list-entry-name"><i class="fa-solid fa-code fa-sm"></i></i> Coding</a>
+                                href="{% url 'coding' %}" class="navigation-list-link"><i
+                                    class="fa-solid fa-code fa-sm"></i></i><span
+                                    class="navigation-list-entry-name"> Coding </span></a>
                         </div>
 
 
@@ -60,7 +72,9 @@
 
                 <!--CONTACT-->
                 <div class="navigation-list-entry {% if nav == 'contact' %}navigation-active{% endif %}"><a
-                        href="{% url 'contact' %}" class="navigation-list-entry-name"><i class="fa-solid fa-address-card fa-sm"></i> Contact</a>
+                        href="{% url 'contact' %}" class="navigation-list-link"><i
+                            class="fa-solid fa-address-card fa-sm"></i><span
+                            class="navigation-list-entry-name"> Contact</span></a>
                 </div>
             </div>
         </div>

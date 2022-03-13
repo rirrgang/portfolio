@@ -14,21 +14,34 @@
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"
         integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
     <script src="{% static 'portfolio/scripts/main.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.js"
-        integrity="sha512-iaZ8D6RzguOWQ+B5SLJCHPid3/2UaVIFnsNJHy068pv3r5G6kYOe+XufLqd6qNrQmaHeYR0iVyu2xkXB2llnMg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.module.js"
-        integrity="sha512-PXon5ZCv1wqUONrT5oeawVTJ+Z579HYAHMQOp7IjnJnnZPIxba28Fus++EGc3m/oIXSQIRW3d5b0d7mGkmkxKw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="importmap">
+        {
+        "imports": {
+            //"three": "../master/three.js-master/build/three.module.js"
+            "three": "{% static 'portfolio/scripts/libs/three/build/three.module.js' %}"
+            //"three": "./scripts/libs/three/build/three.module.js"
+            }
+        }
+    </script>
+    <script type="module" src="{% static 'portfolio/scripts/load3DModel.js' %}"></script>
+    <!--SPLIDE LIB-->
+    <script src="{% static 'portfolio/scripts/libs/splide-3.6.12/dist/js/splide.min.js' %}"></script>
+    <link rel="stylesheet"
+        href="{% static 'portfolio/scripts/libs/splide-3.6.12/dist/css/themes/splide-skyblue.min.css' %}">
     <!--<script type="module" src="{% static '/portfolio/scripts/work3js.js'%}"></script>-->
     <title>RI Visuals</title>
 </head>
 
 <body {% block bodybackground %}{% endblock %}>
 
+    <!--{% include 'portfolio//html/stars.html' %}-->
     {% include 'portfolio//html/navigation.html' %}
-    {% include 'portfolio//html/stars.html' %}
-    {% block content %}{% endblock %}
+    <div class="content">
+        {% block content %}
+    </div>
+
+    {% endblock %}
+
 
 </body>
 

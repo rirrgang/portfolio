@@ -1,13 +1,21 @@
-<script>
+<canvas class="threejs-canvas-fs" id="stars"></canvas>
+
+<script type="module">
+    import * as THREE from 'three';
     $(document).ready(function () {
-        var width = $("body").width();
-        var height = $("body").height();
+        var width = $(document.body).width();//window.innerWidth ;
+        var height = $(document.body).height();//window.innerHeight;
+        var myCanvas = document.getElementById("stars");
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
 
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        const renderer = new THREE.WebGLRenderer({
+            alpha: true,
+            antialias: true,
+            canvas: myCanvas,
+        });
         renderer.setSize(width, height);
-        document.body.appendChild(renderer.domElement);
+        $(document.body).prepend(renderer.domElement);
 
 
         starGeo = new THREE.Geometry();
@@ -57,12 +65,33 @@
         window.addEventListener('resize', onWindowResize);
 
         function onWindowResize() {
-
+            width = $(document.body).width();//window.innerWidth ;
+            height = $(document.body).height();//window.innerHeight;
             camera.aspect = width / height;
+            //camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
 
+            //renderer.setSize( window.innerWidth, window.innerHeight );
             renderer.setSize(width, height);
 
         }
+
+        const cursor = {}
+        cursor.x = 0
+        cursor.y = 0
+
+        //Paralax
+        // window.addEventListener('mousemove', (event) => {
+        //     width = $(document.body).width();//window.innerWidth ;
+        //     height = $(document.body).height();//window.innerHeight;
+        //     cursor.x = event.clientX / width - 0.5
+        //     cursor.y = event.clientY / height - 0.5
+        //     const parallaxX = cursor.x
+        //     const parallaxY = -cursor.y
+        //     camera.position.x = parallaxX *5
+        //     camera.position.z = parallaxY * 5
+
+        //     //console.log(cursor)
+        // })
     });
 </script>

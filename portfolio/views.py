@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 
 def home(request):
-   return render(request, 'portfolio/html/base.html', {'nav': 'home'})
+   return render(request, 'portfolio/html/home.html', {'nav': 'home'})
 
 def about(request):
    return render(request, 'portfolio/html/about.html', {'nav': 'about'})
@@ -30,16 +30,16 @@ def coding(request):
 
 # ------------------------CUSTOM ERROR PAGES ---------------------
 def handler400(request, exception):
-    return render(request, 'portfolio/html/400.html', status=400)
+    return render(request, 'portfolio/html/errors/400.html', status=400)
 
 def handler403(request, exception):
-    return render(request, 'portfolio/html/403.html', status=403)
+    return render(request, 'portfolio/html/errors/403.html', status=403)
 
 def handler404(request, exception):
-    return render(request, 'portfolio/html/404.html', status=404)
+    return render(request, 'portfolio/html/errors/404.html', status=404)
 
 def handler500(request):
-    return render(request, 'portfolio/html/500.html', status=500)
+    return render(request, 'portfolio/html/errors/500.html', status=500)
 
 
 
