@@ -35,7 +35,7 @@
 
     function init() {
         camera = new THREE.PerspectiveCamera(45, width / height, 0.25, 20);
-        camera.position.set(10, 10, 10);
+        camera.position.set(10, 15, 10);
 
         scene = new THREE.Scene();
 
@@ -92,6 +92,14 @@
         window.addEventListener('resize', onWindowResize);
     }
 
+    function removeAllFromScene() {
+        //remove all
+        for (var i = scene.children.length - 1; i >= 0; i--) {
+            var obj = scene.children[i];
+            scene.remove(obj);
+        }
+    }
+
     function onWindowResize() {
         var width = $(myCanvas).width();//window.innerWidth ;
         var height = $(myCanvas).height();//window.innerHeight;
@@ -132,28 +140,37 @@
     }
 
     function loadModel(src) {
+        var modelNameHTML = $("#modelName");
+
         if (model) {
-            scene.remove(model);
+            //scene.remove(model);
+            removeAllFromScene();
+            scene.add(gridHelper)
         }
         modelLocation = src;
-        console.log(src);
         loader.load(src, function (gltf) {
             model = gltf.scene;
             if (currentRotY) {
                 model.rotation.y = currentRotY;
                 gridHelper.rotation.y = currentRotY;
             }
-
+            //add model
             scene.add(gltf.scene);
-
-
             render();
             if (animID) { cancelAnimationFrame(animID); }
             isAnimating = true;
             animate();
+        }, function onProgress() {
 
+        }, function onError(error) {
+            console.log(error);
+            isAnimating = false;
+            
+            if(modelNameHTML){
+                modelNameHTML.toggleClass("video-title-error");
+                modelNameHTML.html("...ERROR...");
+            } 
         });
-
     }
 
     window.loadModel = loadModel;

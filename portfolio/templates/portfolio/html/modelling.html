@@ -6,7 +6,7 @@
 <!------------------------------------------ CENTER -------------------------------------------------->
 
 <div class="webglRenderer-container">
-    <span class="video-title">Cube</span>
+    <span class="video-title" id="modelName">---</span>
     <div class="main-webglRenderer-container">
         <!--<div id="webgl" class="webglRenderer-element"></div>-->
         {% include 'portfolio//html/3DmodelLoader.html' %}
@@ -17,17 +17,12 @@
     <div id="thumbnail-slider" class="splide">
         <div class="splide__track">
             <ul class="splide__list">
+                {% for model in models %}
                 <li class="splide__slide">
-                    <img src="{% static 'portfolio/pictures/about_logo.png' %}" data-name="test1"
-                        data-model-source="/static/portfolio/models/Swiss_Knife.gltf">
+                    <img src="{{model.imgSrc}}" data-name="{{model.dataName}}"
+                        data-model-source="{{model.dataModelSource}}">
                 </li>
-                <li class="splide__slide">
-                    <img src="{% static 'portfolio/pictures/logo3.png' %}" data-name="test2"
-                        data-model-source="/static/portfolio/models/city_house.gltf">
-                </li>
-                <li class="splide__slide">
-                    <img src="{% static 'portfolio/pictures/background.png' %}" data-name="test3">
-                </li>
+                {% endfor %}
             </ul>
         </div>
     </div>
@@ -41,6 +36,7 @@
             fixedWidth: 100,
             fixedHeight: 60,
             gap: 10,
+            padding: 50,
             rewind: true,
             pagination: false,
             cover: true,
@@ -54,6 +50,20 @@
         });
 
         thumbnails.mount();
+        thumbnails.on('active', function (element) {
+            //load data name and display it
+            var dataName = $(element.slide).find("img").attr("data-name");
+            $("#modelName").html(dataName.toString());
+            $("#modelName").removeClass("video-title-error");
+
+            var dataModelSource = $(element.slide).find("img").attr("data-model-source");
+            console.log(dataName);
+            console.log(dataModelSource);
+            if (dataModelSource) {
+                loadModel(dataModelSource)
+            }
+
+        });
     });
 </script>
 
@@ -77,18 +87,24 @@
 <script>
 
 
-    $(function () {
-        $(".splide__slide").on("click", function () {
-            var dataName = $(this).find("img").attr("data-name");
-            var dataModelSource = $(this).find("img").attr("data-model-source");
-            console.log(dataName);
-            console.log(dataModelSource);
-            if (dataModelSource) {
-                loadModel(dataModelSource)
-            }
+    // $(function () {
+    //     $(".splide__slide").on("click", function () {
 
-        });
-    });
+    //         //load data name and display it
+    //         var dataName = $(this).find("img").attr("data-name");
+    //         $("#modelName").html(dataName.toString());
+    //         $("#modelName").removeClass("video-title-error");
+
+
+    //         var dataModelSource = $(this).find("img").attr("data-model-source");
+    //         console.log(dataName);
+    //         console.log(dataModelSource);
+    //         if (dataModelSource) {
+    //             loadModel(dataModelSource)
+    //         }
+
+    //     });
+    // });
 </script>
 
 <!------------------------------------------ RIGHT SIDE -------------------------------------------------->

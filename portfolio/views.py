@@ -19,7 +19,18 @@ def videos(request):
    return render(request, 'portfolio/html/videos.html', {'nav': 'videos'})
 
 def modelling(request):
-   return render(request, 'portfolio/html/modelling.html', {'nav': 'modelling'})
+
+   context = {
+      'nav' : 'modelling',
+      'models' : [
+         {'dataName': 'Swiss Knife'  , 'dataModelSource' : '/static/portfolio/models/Swiss_Knife.gltf', 'imgSrc': '/static/portfolio/models/Swiss_Knife.png'},
+         {'dataName': 'Combat Knife' , 'dataModelSource' : '/static/portfolio/models/Combat_Knife.gltf','imgSrc': '/static/portfolio/models/Combat_Knife.png'},
+         {'dataName': 'City House'   , 'dataModelSource' : '/static/portfolio/models/city_house.gltf',  'imgSrc': '/static/portfolio/pictures/logo3.png'},
+         
+      ]
+   }
+
+   return render(request, 'portfolio/html/modelling.html', context)
 
 def games(request):
    return render(request, 'portfolio/html/games.html', {'nav': 'games'})
