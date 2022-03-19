@@ -140,11 +140,6 @@
     }
 
     function loadModel(src) {
-        if(window.thumbnails){
-                var Autoplay = thumbnails.Components.Autoplay;
-                Autoplay.play();
-            }
-            
         var modelNameHTML = $("#modelName");
 
         if (model) {
@@ -167,8 +162,18 @@
             isAnimating = true;
             animate();
             
-        }, function onProgress() {
+        }, function onProgress(progress) {
             isAnimating = false;
+            //when is finished loading
+            if((progress.loaded / progress.total * 100) == 100){
+                //console.log("finished");
+                if(window.thumbnails){
+                    var Autoplay = thumbnails.Components.Autoplay;
+                    Autoplay.play();
+                }
+            }
+            
+            
         }, function onError(error) {
             console.log(error);
             isAnimating = false;
