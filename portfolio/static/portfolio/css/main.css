@@ -10,7 +10,9 @@ body {
     /* height: 3000px; */
 }
 
+
 /*------------------------------------------------TRHEE JS CANVAS--------------------------------------*/
+
 .threejs-canvas-fs {
     position: absolute;
 }
@@ -22,7 +24,9 @@ body {
     cursor: grab;
 }
 
+
 /*------------------------------------------------NAVIGATION--------------------------------------*/
+
 header {
     width: 100%;
     /*height: 80px;*/
@@ -68,6 +72,7 @@ header {
     background-color: #202020;
 }
 
+
 /* .navigation-logo-link:hover .navigation-logo {
     transform: rotate(360deg) scale(1.1);
     transition: 500ms;
@@ -91,9 +96,6 @@ header {
     font-variant: small-caps;
 }
 
-
-
-
 .nav-submenu {
     background: radial-gradient(rgb(73, 73, 73), #3f3f3f);
     display: none;
@@ -105,7 +107,6 @@ header {
     top: 76px;
     box-shadow: #850303 4px 4px 0px, #840000 -4px 4px;
 }
-
 
 .fa-caret-down {
     transition: 500ms;
@@ -150,18 +151,14 @@ header {
     flex-direction: column;
 }
 
-
 .navigation-active {
     background-color: #202020;
 }
-
 
 .navigation-list-entry:hover {
     background-color: #202020;
     transition: 500ms;
 }
-
-
 
 .navigation-list-link,
 .content-title,
@@ -180,12 +177,8 @@ header {
     transition: 500ms;
     text-decoration: none;
     font-variant: small-caps;
-    text-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px,
-        #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+    text-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
 }
-
-
-
 
 .navigation-hamburger-menu {
     display: none;
@@ -199,23 +192,42 @@ header {
     transition: 500ms;
     position: absolute;
     right: 0px;
-    margin-top: 10px;
+    margin-top: 12px;
     margin-right: 20px;
     z-index: 2;
     cursor: pointer;
-    box-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px,
-        #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+    box-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
     border-radius: 100%;
     transition: 500ms;
 }
-
 
 .navigation-hamburger-menu:hover {
     background-color: rgb(158, 0, 0);
 }
 
 
+/* @media (max-width: 900px) {
+    .navigation-logo-name,
+    .navigation-list-link,
+    .content-title,
+    .video-title,
+    .content-text-para {
+        line-height: 40px;
+        font-size: 30px;
+    }
+    .navigation-list-entry {
+        height: 40px;
+    }
+    .navigation-logo {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 3px;
+    }
+} */
+
+
 /*------------------------------------------------------------- menu btn anim --------------------------------------------- */
+
 .menu-btn-icon {
     width: 35px;
     height: 30px;
@@ -311,57 +323,55 @@ header {
 }
 
 
+/* @media (max-width: 900px) {
+    .navigation-hamburger-menu {
+        width: 32px;
+        height: 32px;
+        margin-top: 2px;
+    }
+} */
+
 
 /* Responsive layout - makes a one column layout instead of a two-column layout  --------------------------------------------- */
-@media (max-width: 800px) {
 
+@media (max-width: 900px) {
     .nav-submenu {
         position: relative;
         top: 0px;
         width: 100%;
     }
-
     .navigation-hamburger-menu {
         transform: rotate(0deg);
         opacity: 1;
         /* margin-top: 10px; */
     }
-
     #menu-btn:checked~.navigation-hoz .navigation-list {
         display: flex;
         flex-direction: column;
         position: relative;
         width: 100%;
-        margin-top: 80px;
+        margin-top: 40px;
         right: 0px;
     }
-
     .navigation-hamburger-menu {
         display: flex;
     }
-
     #menu-btn:checked~.navigation-hoz .navigation-list-entry {
         width: 100%;
         height: auto;
     }
-
-
-
     #menu-btn:not(:checked)~.navigation-hoz {
         /* height: 80px; */
         flex-direction: row;
-
     }
-
     #menu-btn:not(:checked)~.navigation-hoz .navigation-list {
         opacity: 0;
     }
-
     #menu-btn:not(:checked)~.navigation-hoz .navigation-list-entry.nav-submenu-btn {
         display: none;
     }
-
 }
+
 
 /*------------------------------------------------VIDEO + PLAY BUTTON--------------------------------------*/
 
@@ -393,9 +403,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background:
-        /*linear-gradient(45deg, rgba(191,0,0,1) 0%, rgba(98,6,6,1) 100%)*/
-        red;
+    background: /*linear-gradient(45deg, rgba(191,0,0,1) 0%, rgba(98,6,6,1) 100%)*/
+    red;
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -427,8 +436,7 @@ header {
     height: 600px; */
     /*background: radial-gradient(rgba(191, 0, 0, 1), rgba(98, 6, 6, 1));*/
     /*box-shadow: rgb(231, 49, 49, 0.3) 0px 7px 29px 0px;*/
-    box-shadow: red 0px 0px 3px, red 0px 0px 3px, red 0px 0px 3px,
-        red 0px 0px 4px, red 0px 0px 4px, red 0px 0px 4px;
+    box-shadow: red 0px 0px 3px, red 0px 0px 3px, red 0px 0px 3px, red 0px 0px 4px, red 0px 0px 4px, red 0px 0px 4px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -468,27 +476,21 @@ header {
 .pulsate-text:hover {
     animation: none;
     transform: scale(1.1);
-    text-shadow: white 0px 0px 3px, white 0px 0px 3px, white 0px 0px 3px,
-        white 0px 0px 4px, white 0px 0px 4px, white 0px 0px 4px;
+    text-shadow: white 0px 0px 3px, white 0px 0px 3px, white 0px 0px 3px, white 0px 0px 4px, white 0px 0px 4px, white 0px 0px 4px;
 }
 
 @keyframes pulsate-text-anim {
     0% {
         transform: scale(1.0);
-        text-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px,
-            #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+        text-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
     }
-
     50% {
         transform: scale(1.1);
-        text-shadow: white 0px 0px 3px, white 0px 0px 3px, white 0px 0px 3px,
-            white 0px 0px 4px, white 0px 0px 4px, white 0px 0px 4px;
+        text-shadow: white 0px 0px 3px, white 0px 0px 3px, white 0px 0px 3px, white 0px 0px 4px, white 0px 0px 4px, white 0px 0px 4px;
     }
-
     100% {
         transform: scale(1.0);
-        text-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px,
-            #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+        text-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
     }
 }
 
@@ -496,25 +498,34 @@ header {
     0% {
         color: white;
     }
-
     50% {
         color: red;
     }
-
     100% {
         color: white;
     }
 }
 
+
 /* Responsive layout - makes a one column layout instead of a two-column layout  --------------------------------------------- */
-@media (max-width: 800px) {
+
+@media (max-width: 900px) {
     .threejs-canvas-ms {
         width: 400px;
         height: 400px;
     }
 }
 
+@media (max-width: 600px) {
+    .threejs-canvas-ms {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+
 /*------------------------------------------------VIDEO LIST--------------------------------------*/
+
 .video-content {
     display: flex;
     justify-content: center;
@@ -538,7 +549,6 @@ header {
     width: 200px;
     height: 160px;
     background: radial-gradient(rgba(191, 0, 0, 1), rgba(98, 6, 6, 1));
-
     margin-top: 10px;
     margin-bottom: 10px;
     display: flex;
@@ -547,16 +557,13 @@ header {
     align-items: center;
     transition: 500ms;
     cursor: pointer;
-    box-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px,
-        #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+    box-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
 }
 
 .video-list-entry-container:hover {
     transition: 500ms;
     transform: rotate(2deg) scale(1.1);
-    box-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px,
-        #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, rgb(231, 49, 49, 0.75) 0px 7px 29px 0px;
-
+    box-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, rgb(231, 49, 49, 0.75) 0px 7px 29px 0px;
 }
 
 .video-list-entry-container:active,
@@ -574,11 +581,11 @@ header {
     .video-content {
         flex-direction: column;
     }
-
     .video-list-container {
         flex-direction: row;
     }
 }
+
 
 /*------------------------------------------------BLOG CONTENT--------------------------------------*/
 
@@ -620,6 +627,7 @@ header {
     height: 300px;
 }
 
+
 /*------------------------------------------------MISC--------------------------------------*/
 
 .bottom-line,
@@ -629,15 +637,13 @@ header {
     background: radial-gradient(rgba(191, 0, 0, 1), rgba(98, 6, 6, 1));
     bottom: 0;
     position: absolute;
-    box-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px,
-        #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+    box-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
 }
 
 .content-title-bottom-line {
     width: 75px;
     position: initial;
-    box-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px,
-        #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+    box-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
 }
 
 .link {
@@ -654,6 +660,7 @@ header {
     transition: 500ms;
     transform: scale(1.05);
 }
+
 
 /*------------------------------------------------WEBGL THREEJS--------------------------------------*/
 

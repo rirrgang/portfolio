@@ -8,21 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Roboto&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5615ca7e9d.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/x-icon" href="{% static 'portfolio/pictures/favicon.ico' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'portfolio/pictures/favicon.png' %}">
     <link rel="stylesheet" href="{% static 'portfolio/css/main.css' %}">
     <script src="{% static 'portfolio/scripts/jQuery-3.6.0.js' %}"></script>
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"
-        integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
     <script src="{% static 'portfolio/scripts/main.js' %}"></script>
     <script type="importmap">
-        {
-        "imports": {
-            //"three": "../master/three.js-master/build/three.module.js"
-            //"three": "{% static 'portfolio/scripts/libs/three/build/three.module.js' %}"
-            //"three": "./scripts/libs/three/build/three.module.js"
-            "three": "https://unpkg.com/three/build/three.module.js"
-            }
-        }
+        { "imports": { //"three": "../master/three.js-master/build/three.module.js" //"three": "{% static 'portfolio/scripts/libs/three/build/three.module.js' %}" //"three": "./scripts/libs/three/build/three.module.js" "three": "https://unpkg.com/three/build/three.module.js"
+        } }
     </script>
     <script type="module" src="{% static 'portfolio/scripts/load3DModel.js' %}"></script>
     <!--SPLIDE LIB-->
@@ -34,8 +27,7 @@
 
 <body {% block bodybackground %}{% endblock %}>
 
-    {% include 'portfolio//html/stars.html' %}
-    {% include 'portfolio//html/navigation.html' %}
+    {% include 'portfolio//html/stars.html' %} {% include 'portfolio//html/navigation.html' %}
     <div class="content">
         {% block content %}
     </div>
