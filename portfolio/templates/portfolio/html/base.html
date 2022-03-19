@@ -14,8 +14,7 @@
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
     <script src="{% static 'portfolio/scripts/main.js' %}"></script>
     <script type="importmap">
-        { "imports": { //"three": "../master/three.js-master/build/three.module.js" //"three": "{% static 'portfolio/scripts/libs/three/build/three.module.js' %}" //"three": "./scripts/libs/three/build/three.module.js" "three": "https://unpkg.com/three/build/three.module.js"
-        } }
+        { "imports": { "three": "https://unpkg.com/three/build/three.module.js" } }
     </script>
     <script type="module" src="{% static 'portfolio/scripts/load3DModel.js' %}"></script>
     <!--SPLIDE LIB-->
