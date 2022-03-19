@@ -26,7 +26,12 @@ def modelling(request):
          {'dataName': 'Swiss Knife'  , 'dataModelSource' : '/static/portfolio/models/Swiss_Knife.gltf', 'imgSrc': '/static/portfolio/models/Swiss_Knife.png'},
          {'dataName': 'Combat Knife' , 'dataModelSource' : '/static/portfolio/models/Combat_Knife.gltf','imgSrc': '/static/portfolio/models/Combat_Knife.png'},
          {'dataName': 'City House'   , 'dataModelSource' : '/static/portfolio/models/city_house.gltf',  'imgSrc': '/static/portfolio/pictures/logo3.png'},
-         
+         {'dataName': 'Swiss Knife'  , 'dataModelSource' : '/static/portfolio/models/Swiss_Knife.gltf', 'imgSrc': '/static/portfolio/models/Swiss_Knife.png'},
+         {'dataName': 'Combat Knife' , 'dataModelSource' : '/static/portfolio/models/Combat_Knife.gltf','imgSrc': '/static/portfolio/models/Combat_Knife.png'},
+         {'dataName': 'City House'   , 'dataModelSource' : '/static/portfolio/models/city_house.gltf',  'imgSrc': '/static/portfolio/pictures/logo3.png'},
+         {'dataName': 'Swiss Knife'  , 'dataModelSource' : '/static/portfolio/models/Swiss_Knife.gltf', 'imgSrc': '/static/portfolio/models/Swiss_Knife.png'},
+         {'dataName': 'Combat Knife' , 'dataModelSource' : '/static/portfolio/models/Combat_Knife.gltf','imgSrc': '/static/portfolio/models/Combat_Knife.png'},
+         {'dataName': 'City House'   , 'dataModelSource' : '/static/portfolio/models/city_house.gltf',  'imgSrc': '/static/portfolio/pictures/logo3.png'},
       ]
    }
 

@@ -24,8 +24,30 @@
                 </li>
                 {% endfor %}
             </ul>
+
         </div>
+
+        <!-- Add the progress bar element -->
+        <div class="splide__progress">
+            <div class="splide__progress__bar">
+            </div>
+
+        </div>
+
+        <!-- Add the autoplay control element -->
+        <div class="my-autoplay-controls">
+            <div class="video-play-btn-container">
+                <div class="video-play-btn-border">
+                    <button class="video-play-btn"><i id="video-play-btn-icon" class="fa-solid fa-pause"></i></button>
+                </div>
+            </div>
+        </div>
+
+
+
+
     </div>
+
 </div>
 
 
@@ -38,18 +60,56 @@
             gap: 10,
             padding: 50,
             rewind: true,
-            pagination: false,
+            pagination: true,
             cover: true,
             isNavigation: true,
+            drag: false,
+            focus: 'center',
             breakpoints: {
                 600: {
                     fixedWidth: 60,
                     fixedHeight: 44,
                 },
             },
+
+            autoplay: true,
+            pauseOnHover: true,
+            pauseOnFocus: true,
+            resetProgress: false,
+            perPage: 1,
+            width: 400,
         });
 
         thumbnails.mount();
+
+        /*-------------------------------AUTPLAY TOGGLE BUTTON----------------------------------------*/
+        var toggleButtonNew = $('.video-play-btn').get(0)
+        var toggleButtonImage = $('.video-play-btn i').get(0)
+        thumbnails.on('autoplay:play', function () {
+            toggleButtonNew.setAttribute('aria-label', 'Pause autoplay');
+            $(toggleButtonImage).removeClass("fa-play");
+            $(toggleButtonImage).addClass("fa-pause");
+        });
+
+        thumbnails.on('autoplay:pause', function () {
+            toggleButtonNew.setAttribute('aria-label', 'Start autoplay');
+            $(toggleButtonImage).removeClass("fa-pause");
+            $(toggleButtonImage).addClass("fa-play");
+        });
+
+        toggleButtonNew.addEventListener('click', function () {
+            var Autoplay = thumbnails.Components.Autoplay;
+
+            if (Autoplay.isPaused()) {
+                Autoplay.play();
+            } else {
+                Autoplay.pause();
+            }
+        });
+
+
+
+        /*---------------------------------------LOAD NEXT MODEL CALLBACK--------------------------------------*/
         thumbnails.on('active', function (element) {
             //load data name and display it
             var dataName = $(element.slide).find("img").attr("data-name");
@@ -57,8 +117,8 @@
             $("#modelName").removeClass("video-title-error");
 
             var dataModelSource = $(element.slide).find("img").attr("data-model-source");
-            console.log(dataName);
-            console.log(dataModelSource);
+            console.log("DataName: " + dataName);
+            console.log("DataModelSource: " + dataModelSource);
             if (dataModelSource) {
                 loadModel(dataModelSource)
             }
@@ -68,18 +128,132 @@
 </script>
 
 <style>
+    .video-play-btn-container {
+        position: initial;
+        opacity: initial;
+
+    }
+
+    .video-play-btn-border {
+        width: 40px;
+        height: 40px;
+    }
+
+    .video-play-btn {
+        background: radial-gradient(rgb(225 34 34), #6e0404);
+        width: 34px;
+        height: 34px;
+    }
+
+
     .slide-holder {
         /* background-color: red; */
         margin-top: 10px;
         margin-bottom: 10px;
         padding: 20px;
         box-shadow: red 0px 0px 3px, red 0px 0px 3px, red 0px 0px 3px, red 0px 0px 4px, red 0px 0px 4px, red 0px 0px 4px;
+        background: #ff00001f;
+        backdrop-filter: blur(2px);
+    }
 
+    .splide__slide:hover {
+        transform: scale(1.1);
+        border: 3px solid red !important;
+    }
+
+    .splide__slide.is-active {
+        border: 3px solid red !important;
     }
 
     .splide__slide img {
         width: 100%;
         height: auto;
+
+    }
+
+    .splide__track {
+        background: #5a06069c;
+        padding: 5px;
+        border: 3px solid #990000;
+    }
+
+    .splide__pagination {
+        bottom: initial;
+        margin-top: 10px;
+        position: relative;
+    }
+
+    .splide__pagination__page.is-active {
+        background: #d93333;
+    }
+
+    .splide__pagination__page:hover {
+        background: rgb(255, 124, 1);
+    }
+
+    .splide__arrow {
+        top: 37px;
+        border: 3px solid red;
+        border-radius: 100%;
+        background: radial-gradient(rgb(225 34 34), #6e0404);
+    }
+
+    .splide__arrow.splide__arrow--prev {
+        left: -15px;
+    }
+
+    .splide__arrow.splide__arrow--next {
+        right: -15px;
+    }
+
+    .splide__arrow svg {
+        fill: white;
+    }
+
+    .splide__arrow svg:hover {
+        fill: white;
+    }
+
+    .splide__arrow.splide__arrow--prev:hover,
+    .splide__arrow.splide__arrow--next:hover {
+        transform: scale(1.1);
+        transform-origin: center;
+        top: 17px;
+    }
+
+    .splide__progress {
+        background: rgba(255, 0, 0, 0.411);
+        border-radius: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+
+
+    .splide__progress__bar {
+        height: 10px;
+        background: rgb(184, 16, 16);
+        border-radius: 20px;
+    }
+
+    .my-autoplay-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /*margin: 20px;*/
+        /*padding: 20px;*/
+    }
+
+    @media (max-width: 600px) {
+
+        .splide__arrow {
+            top: 30px;
+        }
+
+        .splide__arrow.splide__arrow--prev:hover,
+        .splide__arrow.splide__arrow--next:hover {
+            top: 10px;
+        }
     }
 </style>
 
