@@ -43,8 +43,8 @@
         //const rgbeTextureLocation = "{% static 'portfolio/scripts/libs/three/examples/textures/equirectangular/royal_esplanade_1k.hdr' %}" //HDR Location
         const rgbeTextureLocation = "{% static 'portfolio/pictures/HDRs/royal_esplanade_1k.hdr' %}" //HDR Location
 
-        //const modelLocation = "{% static 'portfolio/models/Swiss_Knife.gltf' %}" //Model Location
-        modelLocation = "{% static 'portfolio/models/city_house.gltf' %}" //Model Location
+        //const modelLocation = "{% static 'portfolio/models/Swiss_Knife.gltf' %}" 
+        modelLocation = "{% static 'portfolio/models/Swiss_Knife.gltf' %}" //Model Location // First model to load
         //------------------------------------------------------------------------------
         new RGBELoader().load(rgbeTextureLocation, function (texture) {
 
@@ -63,7 +63,7 @@
 
         const size = 5;
         const divisions = 6;
-        const colorCenterLine = new THREE.Color(0x00ff00);;
+        const colorCenterLine = new THREE.Color(0x00ff00); //green
 
         gridHelper = new THREE.GridHelper(size, divisions, colorCenterLine);
         scene.add(gridHelper);
@@ -140,12 +140,18 @@
     }
 
     function loadModel(src) {
+        if(window.thumbnails){
+                var Autoplay = thumbnails.Components.Autoplay;
+                Autoplay.play();
+            }
+            
         var modelNameHTML = $("#modelName");
 
         if (model) {
             //scene.remove(model);
             removeAllFromScene();
-            scene.add(gridHelper)
+            scene.add(gridHelper);
+            camera.position.set(10, 15, 10);
         }
         modelLocation = src;
         loader.load(src, function (gltf) {
@@ -160,8 +166,9 @@
             if (animID) { cancelAnimationFrame(animID); }
             isAnimating = true;
             animate();
+            
         }, function onProgress() {
-
+            isAnimating = false;
         }, function onError(error) {
             console.log(error);
             isAnimating = false;
