@@ -151,6 +151,7 @@
             removeAllFromScene();
             scene.add(gridHelper);
             camera.position.set(10, 15, 10);
+            controls.target.set(0, 0, - 0.2);
         }
         modelLocation = src;
         loader.load(src, function (gltf) {

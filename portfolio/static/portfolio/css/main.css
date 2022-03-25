@@ -18,10 +18,10 @@ body {
 }
 
 .threejs-canvas-ms {
-    position: absolute;
+    /* position: absolute; */
     width: 500px;
     height: 500px;
-    cursor: grab;
+    /* cursor: grab; */
 }
 
 .main-webglRenderer-container {
@@ -102,7 +102,7 @@ header {
 }
 
 .nav-submenu {
-    background: radial-gradient(rgb(73, 73, 73), #3f3f3f);
+    background: linear-gradient(360deg, #343333, #3a3a3a);
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -114,15 +114,8 @@ header {
 }
 
 .fa-caret-down {
+    transform: rotate(0deg);
     transition: 500ms;
-}
-
-.nav-submenu-btn:hover .nav-submenu {
-    display: block;
-}
-
-.nav-submenu-btn:hover .fa-caret-down {
-    transform: rotate(180deg);
 }
 
 .nav-submenu-open {
@@ -132,6 +125,14 @@ header {
 .nav-submenu-open .fa-caret-down {
     transform: rotate(180deg);
 }
+
+.nav-submenu .navigation-list-entry{
+    background: linear-gradient(360deg, #343333, #3a3a3a);
+}
+
+/* .nav-submenu-btn.nav-submenu-open .navigation-list-link:nth-child(1){
+    background: linear-gradient(360deg, #414141, #464646);
+} */
 
 .navigation-list {
     /*background-color: red;*/
@@ -154,7 +155,6 @@ header {
     align-items: center;
     cursor: pointer;
     flex-direction: column;
-    background: none;
 }
 
 .navigation-active {
@@ -162,7 +162,7 @@ header {
 }
 
 .navigation-list-entry:hover {
-    background-color: #202020;
+    background: #202020;
     transition: 500ms;
 }
 
@@ -245,7 +245,8 @@ header {
 }
 
 .main-video-container,
-.main-webglRenderer-container {
+.main-webglRenderer-container,
+.main-webglRenderer-container-space {
     /* width: 800px;
     height: 600px; */
     /*background: radial-gradient(rgba(191, 0, 0, 1), rgba(98, 6, 6, 1));*/
@@ -259,8 +260,17 @@ header {
     border-radius: 100%;
     /*border: solid 3px red;*/
     background: #ff00001f;
-
     /* z-index: -1; */
+    cursor: grab;
+}
+
+.main-webglRenderer-container-space {
+    border:none;
+    backdrop-filter: unset;
+    box-shadow: none;
+    background: none;
+    z-index: 1;
+    cursor: default;
 }
 
 #main-video,
@@ -487,6 +497,9 @@ canvas:active {
 /*------------------------------------------------MEDIA QUERIES--------------------------------------*/
 
 @media (max-width: 900px) {
+
+    
+
     .threejs-canvas-ms {
         width: 400px;
         height: 400px;

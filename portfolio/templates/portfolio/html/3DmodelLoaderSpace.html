@@ -35,8 +35,8 @@
     render();
 
     function init() {
-        camera = new THREE.PerspectiveCamera(45, width / height, 0.25, 20);
-        camera.position.set(10,10,10);
+        camera = new THREE.PerspectiveCamera(45, width / height, 0.25, 50);
+        camera.position.set(5,5,5);
 
         scene = new THREE.Scene();
 
@@ -97,10 +97,24 @@
         render();
 
     }
+    var initialScale = 0;
+    var scaleFactor = 0.0001;
     function animate() {
         if (isAnimating) {
             if (model) {
                 model.rotation.x += 0.005;
+                 
+                
+                initialScale += scaleFactor;
+                if(initialScale >= 1){
+                    scaleFactor = -scaleFactor;
+                }
+                if(initialScale <= 0){
+                    scaleFactor = scaleFactor * -1;
+                }
+                
+                
+                model.scale.set(initialScale,initialScale,initialScale);
             }
         }
         mixer.update(clock.getDelta());
