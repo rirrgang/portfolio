@@ -24,6 +24,11 @@ body {
     cursor: grab;
 }
 
+.main-webglRenderer-container {
+    width: 500px;
+    height: 500px;
+}
+
 
 /*------------------------------------------------NAVIGATION--------------------------------------*/
 
@@ -149,6 +154,7 @@ header {
     align-items: center;
     cursor: pointer;
     flex-direction: column;
+    background: none;
 }
 
 .navigation-active {
@@ -180,199 +186,6 @@ header {
     text-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
 }
 
-.navigation-hamburger-menu {
-    display: none;
-    /* display: flex; */
-    opacity: 0;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    background-color: #7D0404;
-    transition: 500ms;
-    position: absolute;
-    right: 0px;
-    margin-top: 12px;
-    margin-right: 20px;
-    z-index: 2;
-    cursor: pointer;
-    box-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
-    border-radius: 100%;
-    transition: 500ms;
-}
-
-.navigation-hamburger-menu:hover {
-    background-color: rgb(158, 0, 0);
-}
-
-
-/* @media (max-width: 900px) {
-    .navigation-logo-name,
-    .navigation-list-link,
-    .content-title,
-    .video-title,
-    .content-text-para {
-        line-height: 40px;
-        font-size: 30px;
-    }
-    .navigation-list-entry {
-        height: 40px;
-    }
-    .navigation-logo {
-        width: 32px;
-        height: 32px;
-        margin-bottom: 3px;
-    }
-} */
-
-
-/*------------------------------------------------------------- menu btn anim --------------------------------------------- */
-
-.menu-btn-icon {
-    width: 35px;
-    height: 30px;
-    margin: 10px 10px;
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.menu-btn-icon span {
-    background-color: #FFF;
-    position: absolute;
-    border-radius: 2px;
-    transition: .3s cubic-bezier(.8, .5, .2, 1.4);
-}
-
-.menu-btn-icon span:nth-child(1) {
-    width: 100%;
-    height: 4px;
-    display: block;
-    top: 0px;
-    left: 0px;
-}
-
-.menu-btn-icon span:nth-child(2) {
-    width: 100%;
-    height: 4px;
-    display: block;
-    top: 13px;
-    left: 0px;
-}
-
-.menu-btn-icon span:nth-child(3) {
-    width: 100%;
-    height: 4px;
-    display: block;
-    bottom: 0px;
-    left: 0px;
-}
-
-.menu-btn-icon:not(.open):hover span:nth-child(1) {
-    width: 100%;
-    height: 4px;
-    display: block;
-    top: -2px;
-    left: 0px;
-    transition: .3s cubic-bezier(.8, .5, .2, 1.4);
-}
-
-.menu-btn-icon:not(.open):hover span:nth-child(2) {
-    width: 100%;
-    height: 4px;
-    display: block;
-    top: 13px;
-    left: 0px;
-    transition: .4s cubic-bezier(.8, .5, .2, 1.4);
-}
-
-.menu-btn-icon:not(.open):hover span:nth-child(3) {
-    width: 100%;
-    height: 4px;
-    display: block;
-    bottom: -2px;
-    left: 0px;
-    transition: .3s cubic-bezier(.8, .5, .2, 1.4);
-}
-
-.menu-btn-icon.open span:nth-child(1) {
-    left: 0px;
-    top: 12px;
-    width: 30px;
-    transition: .3s cubic-bezier(.8, .5, .2, 1.4);
-    transform: rotate(90deg);
-    transition-delay: 150ms;
-}
-
-.menu-btn-icon.open span:nth-child(2) {
-    left: 0px;
-    top: 20px;
-    width: 20px;
-    transition: .3s cubic-bezier(.8, .5, .2, 1.4);
-    transform: rotate(45deg);
-    transition-delay: 100ms;
-}
-
-.menu-btn-icon.open span:nth-child(3) {
-    left: 12px;
-    top: 20px;
-    width: 20px;
-    transition: .3s cubic-bezier(.8, .5, .2, 1.4);
-    transform: rotate(-45deg);
-    transition-delay: 100ms;
-}
-
-
-/* @media (max-width: 900px) {
-    .navigation-hamburger-menu {
-        width: 32px;
-        height: 32px;
-        margin-top: 2px;
-    }
-} */
-
-
-/* Responsive layout - makes a one column layout instead of a two-column layout  --------------------------------------------- */
-
-@media (max-width: 900px) {
-    .nav-submenu {
-        position: relative;
-        top: 0px;
-        width: 100%;
-    }
-    .navigation-hamburger-menu {
-        transform: rotate(0deg);
-        opacity: 1;
-        /* margin-top: 10px; */
-    }
-    #menu-btn:checked~.navigation-hoz .navigation-list {
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        width: 100%;
-        margin-top: 40px;
-        right: 0px;
-    }
-    .navigation-hamburger-menu {
-        display: flex;
-    }
-    #menu-btn:checked~.navigation-hoz .navigation-list-entry {
-        width: 100%;
-        height: auto;
-    }
-    #menu-btn:not(:checked)~.navigation-hoz {
-        /* height: 80px; */
-        flex-direction: row;
-    }
-    #menu-btn:not(:checked)~.navigation-hoz .navigation-list {
-        opacity: 0;
-    }
-    #menu-btn:not(:checked)~.navigation-hoz .navigation-list-entry.nav-submenu-btn {
-        display: none;
-    }
-}
-
-
 /*------------------------------------------------VIDEO + PLAY BUTTON--------------------------------------*/
 
 .video-container,
@@ -403,8 +216,9 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: /*linear-gradient(45deg, rgba(191,0,0,1) 0%, rgba(98,6,6,1) 100%)*/
-    red;
+    background:
+        /*linear-gradient(45deg, rgba(191,0,0,1) 0%, rgba(98,6,6,1) 100%)*/
+        red;
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -443,7 +257,9 @@ header {
     flex-direction: row-reverse;
     backdrop-filter: blur(2px);
     border-radius: 100%;
+    /*border: solid 3px red;*/
     background: #ff00001f;
+
     /* z-index: -1; */
 }
 
@@ -460,6 +276,8 @@ header {
     cursor: default;
     font-size: 40px;
 }
+
+/*------------------------------------------------ANIMATIONS KEYFRAMES--------------------------------------*/
 
 .video-title-error {
     animation-name: video-title-error-anim;
@@ -484,10 +302,12 @@ header {
         transform: scale(1.0);
         text-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
     }
+
     50% {
         transform: scale(1.1);
         text-shadow: white 0px 0px 3px, white 0px 0px 3px, white 0px 0px 3px, white 0px 0px 4px, white 0px 0px 4px, white 0px 0px 4px;
     }
+
     100% {
         transform: scale(1.0);
         text-shadow: #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 3px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
@@ -498,28 +318,13 @@ header {
     0% {
         color: white;
     }
+
     50% {
         color: red;
     }
+
     100% {
         color: white;
-    }
-}
-
-
-/* Responsive layout - makes a one column layout instead of a two-column layout  --------------------------------------------- */
-
-@media (max-width: 900px) {
-    .threejs-canvas-ms {
-        width: 400px;
-        height: 400px;
-    }
-}
-
-@media (max-width: 600px) {
-    .threejs-canvas-ms {
-        width: 300px;
-        height: 300px;
     }
 }
 
@@ -581,6 +386,7 @@ header {
     .video-content {
         flex-direction: column;
     }
+
     .video-list-container {
         flex-direction: row;
     }
@@ -675,4 +481,87 @@ header {
 
 canvas:active {
     cursor: grabbing;
+}
+
+
+/*------------------------------------------------MEDIA QUERIES--------------------------------------*/
+
+@media (max-width: 900px) {
+    .threejs-canvas-ms {
+        width: 400px;
+        height: 400px;
+    }
+
+    .main-webglRenderer-container {
+        width: 400px;
+        height: 400px;
+    }
+
+    .nav-submenu {
+        position: relative;
+        top: 0px;
+        width: 100%;
+    }
+
+    .navigation-list-entry{
+        background: linear-gradient(360deg, #262626, #2c2c2c);
+    }
+}
+
+@media (max-width: 600px) {
+    .threejs-canvas-ms {
+        width: 300px;
+        height: 300px;
+    }
+
+    .main-webglRenderer-container {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+
+@media (max-width: 420px) {
+    .threejs-canvas-ms {
+        width: 200px;
+        height: 200px;
+    }
+
+    .main-webglRenderer-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .navigation-logo-name,
+    .navigation-list-link,
+    .content-title,
+    .video-title,
+    .content-text-para {
+        line-height: 40px;
+        font-size: 30px;
+    }
+
+    .navigation-list-entry {
+        height: 40px;
+    }
+
+    .navigation-list-link{
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .navigation-logo {
+        width: 28px;
+        height: 28px;
+        margin-bottom: 4px;
+    }
+
+    #menu-btn:checked~.navigation-hoz .navigation-list {
+        margin-top: 40px !important;
+        /* margin-bottom: 10px; */
+    }
+
+    .bottom-line{
+        height: 2px;
+    }
 }

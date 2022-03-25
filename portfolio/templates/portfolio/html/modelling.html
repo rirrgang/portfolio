@@ -5,9 +5,9 @@
 
 <div class="webglRenderer-container">
     <span class="video-title" id="modelName">Swiss Knife</span>
-    <div class="main-webglRenderer-container">
+    <div class="main-webglRenderer-container" id="modelContainer">
         <!--<div id="webgl" class="webglRenderer-element"></div>-->
-        {% include 'portfolio//html/3DmodelLoader.html' %}
+        {% include 'portfolio/html/3DmodelLoader.html' %}
     </div>
 
 </div>
@@ -102,6 +102,14 @@
             $(toggleButtonImage).addClass("fa-play");
         });
 
+        thumbnails.on('autoplay:playing', function (rate) {
+            // var progressBar = $(".splide__progress__bar").get(0);
+            // colors = ["#FF0000", "#550000"];
+            // colorIndex = parseInt((rate*100) % colors.length, 10);
+            // $(progressBar).css("background-color", colors[colorIndex]);
+            
+        });
+
         toggleButtonNew.addEventListener('click', function () {
             if (Autoplay.isPaused()) {
                 Autoplay.play();
@@ -119,10 +127,19 @@
         $(".main-webglRenderer-container").mouseleave(function () {
             if (Autoplay.isPaused()) {
                 Autoplay.play();
-            } 
+            }
+            window.toggleAnimation(true);
         });
 
-        
+        $(".main-webglRenderer-container").mousedown(function () {
+            window.toggleAnimation(false);
+        });
+
+        // $(".main-webglRenderer-container").mouseup(function () {
+        //     window.toggleAnimation(true);
+        // });
+
+
 
 
 
@@ -197,10 +214,16 @@
         bottom: initial;
         margin-top: 10px;
         position: relative;
+        
+    }
+
+    .splide__pagination__page{
+        box-shadow: 0px 0px 1px 2px #7a1919;
     }
 
     .splide__pagination__page.is-active {
         background: #d93333;
+        
     }
 
     .splide__pagination__page:hover {

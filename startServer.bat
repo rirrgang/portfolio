@@ -1,4 +1,4 @@
-G:\
-cd G:\Schule\Portfolio
+F:\
+cd F:\Schule\Portfolio
 python manage.py runserver --insecure
 pause

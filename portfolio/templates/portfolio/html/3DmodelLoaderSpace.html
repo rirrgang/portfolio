@@ -1,0 +1,171 @@
+{% load static %}
+<canvas class="threejs-canvas-ms" id="modelSpace"></canvas>
+
+<script type="module">
+    //import * as THREE from 'three';
+    import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+    //import { OrbitControls } from "{% static 'portfolio/scripts/libs/three/examples/jsm/controls/OrbitControls.js' %}"
+    import { OrbitControls } from 'https://unpkg.com/three/examples/jsm/controls/OrbitControls.js';
+    //import { GLTFLoader } from "{% static 'portfolio/scripts/libs/three/examples/jsm/loaders/GLTFLoader.js' %}"
+    import { GLTFLoader } from 'https://unpkg.com/three/examples/jsm/loaders/GLTFLoader.js';
+    // import { RGBELoader } from "{% static 'portfolio/scripts/libs/three/examples/jsm/loaders/RGBELoader.js' %}";
+    import { RGBELoader } from 'https://unpkg.com/three/examples/jsm/loaders/RGBELoader.js';
+    
+
+
+    //$(document).ready(function () {
+    var myCanvas = document.getElementById("modelSpace");
+    var width = $(myCanvas).width();//window.innerWidth ;
+    var height = $(myCanvas).height();//window.innerHeight;
+
+    // var webglRendererContainer = $(".main-webglRenderer-container").get(0);
+    // $(webglRendererContainer).css({ "width": width, "height": height });
+
+
+    let camera, scene, renderer, model, mixer;
+    let isAnimating = true;
+    let modelLocation
+    let loader;
+    let animID;
+    let currentRotY;
+    const clock = new THREE.Clock();
+
+
+    init();
+    render();
+
+    function init() {
+        camera = new THREE.PerspectiveCamera(45, width / height, 0.25, 20);
+        camera.position.set(10,10,10);
+
+        scene = new THREE.Scene();
+
+        //GLTF LOADER VARIABLES -------------------------------------------------------------------------------------------------
+        //const rgbeTextureLocation = "{% static 'portfolio/scripts/libs/three/examples/textures/equirectangular/royal_esplanade_1k.hdr' %}" //HDR Location
+        const rgbeTextureLocation = "{% static 'portfolio/pictures/HDRs/royal_esplanade_1k.hdr' %}" //HDR Location
+
+        //const modelLocation = "{% static 'portfolio/models/Swiss_Knife.gltf' %}" 
+        modelLocation = "{% static 'portfolio/models/space_pig.glb' %}" //Model Location // First model to load
+        //------------------------------------------------------------------------------
+        new RGBELoader().load(rgbeTextureLocation, function (texture) {
+
+            texture.mapping = THREE.EquirectangularReflectionMapping;
+
+            //scene.background = texture;
+            scene.environment = texture;
+
+            render();
+        });
+
+        // model
+        loader = new GLTFLoader();
+        loadModel(modelLocation);
+
+        //RENDERER -------------------------------------------------------------------------------------------------
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas: myCanvas });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(width, height);
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1;
+        renderer.outputEncoding = THREE.sRGBEncoding;
+
+        //RSIZE FUNCTION -------------------------------------------------------------------------------------------------
+        window.addEventListener('resize', onWindowResize);
+
+        camera.lookAt(0,0,0);
+    }
+
+    function removeAllFromScene() {
+        //remove all
+        for (var i = scene.children.length - 1; i >= 0; i--) {
+            var obj = scene.children[i];
+            scene.remove(obj);
+        }
+    }
+
+    function onWindowResize() {
+        var myCanvas = document.getElementById("modelContainerSpace");
+        var width = $(myCanvas).width();//window.innerWidth ;
+        var height = $(myCanvas).height();//window.innerHeight;
+
+
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(width, height);
+
+        render();
+
+    }
+    function animate() {
+        if (isAnimating) {
+            if (model) {
+                model.rotation.x += 0.005;
+            }
+        }
+        mixer.update(clock.getDelta());
+
+        animID = requestAnimationFrame(animate);
+
+        renderer.render(scene, camera);
+    };
+
+    function toggleAnimation(bool){
+        isAnimating = bool;
+    }
+
+    function render() {
+
+        renderer.render(scene, camera);
+
+    }
+
+    function loadModel(src) {
+        var modelNameHTML = $("#modelName");
+
+        if (model) {
+            //scene.remove(model);
+            removeAllFromScene();
+            //camera.position.set(10, 15, 10);
+        }
+        modelLocation = src;
+        loader.load(src, function (gltf) {
+            model = gltf.scene;
+            mixer = new THREE.AnimationMixer( gltf.scene );
+            gltf.animations.forEach( ( clip ) => {
+                mixer.clipAction( clip ).play();    
+            } );
+
+            //add model
+            scene.add(gltf.scene);
+            render();
+            if (animID) { cancelAnimationFrame(animID); }
+            isAnimating = true;
+            animate();
+            
+        }, function onProgress(progress) {
+            isAnimating = false;
+            //when is finished loading
+            if((progress.loaded / progress.total) == 1){
+                //console.log("finished");
+                if(window.thumbnails){
+                    var Autoplay = window.thumbnails.Components.Autoplay;
+                    Autoplay.play();
+                }
+            }
+            
+            
+        }, function onError(error) {
+            console.log(error);
+            isAnimating = false;
+            
+            if(modelNameHTML){
+                modelNameHTML.toggleClass("video-title-error");
+                modelNameHTML.html("...ERROR...");
+            } 
+        });
+    }
+
+
+    //});
+</script>

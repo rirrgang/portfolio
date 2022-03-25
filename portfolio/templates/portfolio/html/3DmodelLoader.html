@@ -10,6 +10,7 @@
     import { GLTFLoader } from 'https://unpkg.com/three/examples/jsm/loaders/GLTFLoader.js';
     // import { RGBELoader } from "{% static 'portfolio/scripts/libs/three/examples/jsm/loaders/RGBELoader.js' %}";
     import { RGBELoader } from 'https://unpkg.com/three/examples/jsm/loaders/RGBELoader.js';
+    
 
 
     //$(document).ready(function () {
@@ -17,17 +18,18 @@
     var width = $(myCanvas).width();//window.innerWidth ;
     var height = $(myCanvas).height();//window.innerHeight;
 
-    var webglRendererContainer = $(".main-webglRenderer-container").get(0);
-    $(webglRendererContainer).css({ "width": width, "height": height });
+    // var webglRendererContainer = $(".main-webglRenderer-container").get(0);
+    // $(webglRendererContainer).css({ "width": width, "height": height });
 
 
-    let camera, scene, renderer, model, controls;
+    let camera, scene, renderer, model, controls, mixer;
     let gridHelper;
     let isAnimating = true;
     let modelLocation
     let loader;
     let animID;
     let currentRotY;
+    const clock = new THREE.Clock();
 
 
     init();
@@ -44,7 +46,7 @@
         const rgbeTextureLocation = "{% static 'portfolio/pictures/HDRs/royal_esplanade_1k.hdr' %}" //HDR Location
 
         //const modelLocation = "{% static 'portfolio/models/Swiss_Knife.gltf' %}" 
-        modelLocation = "{% static 'portfolio/models/Swiss_Knife.gltf' %}" //Model Location // First model to load
+        modelLocation = "{% static 'portfolio/models/Swiss_Knife.glb' %}" //Model Location // First model to load
         //------------------------------------------------------------------------------
         new RGBELoader().load(rgbeTextureLocation, function (texture) {
 
@@ -86,7 +88,7 @@
         controls.maxDistance = 10;
         controls.target.set(0, 0, - 0.2);
         controls.update();
-        controls.addEventListener('change', stopAnim);
+        //controls.addEventListener('change', stopAnim);
 
         //RSIZE FUNCTION -------------------------------------------------------------------------------------------------
         window.addEventListener('resize', onWindowResize);
@@ -101,6 +103,7 @@
     }
 
     function onWindowResize() {
+        var myCanvas = document.getElementById("modelContainer");
         var width = $(myCanvas).width();//window.innerWidth ;
         var height = $(myCanvas).height();//window.innerHeight;
 
@@ -119,9 +122,10 @@
                 model.rotation.y += 0.005;
                 gridHelper.rotation.y += 0.005;
                 currentRotY = model.rotation.y;
+                
             }
         }
-
+        mixer.update(clock.getDelta());
         controls.update();
 
         animID = requestAnimationFrame(animate);
@@ -129,8 +133,8 @@
         renderer.render(scene, camera);
     };
 
-    function stopAnim() {
-        isAnimating = false;
+    function toggleAnimation(bool){
+        isAnimating = bool;
     }
 
     function render() {
@@ -151,6 +155,11 @@
         modelLocation = src;
         loader.load(src, function (gltf) {
             model = gltf.scene;
+            mixer = new THREE.AnimationMixer( gltf.scene );
+            gltf.animations.forEach( ( clip ) => {
+                mixer.clipAction( clip ).play();    
+            } );
+
             if (currentRotY) {
                 model.rotation.y = currentRotY;
                 gridHelper.rotation.y = currentRotY;
@@ -165,10 +174,10 @@
         }, function onProgress(progress) {
             isAnimating = false;
             //when is finished loading
-            if((progress.loaded / progress.total * 100) == 100){
+            if((progress.loaded / progress.total) == 1){
                 //console.log("finished");
                 if(window.thumbnails){
-                    var Autoplay = thumbnails.Components.Autoplay;
+                    var Autoplay = window.thumbnails.Components.Autoplay;
                     Autoplay.play();
                 }
             }
@@ -185,6 +194,8 @@
         });
     }
 
+    /*------------------JS Bindings-------------------------*/
     window.loadModel = loadModel;
+    window.toggleAnimation = toggleAnimation;
     //});
 </script>

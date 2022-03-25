@@ -1,0 +1,79 @@
+{% load static %}
+<canvas class="threejs-canvas-ms" id="shader"></canvas>
+
+<script type="module">
+    //import * as THREE from 'three';
+    import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+    //import { OrbitControls } from "{% static 'portfolio/scripts/libs/three/examples/jsm/controls/OrbitControls.js' %}"
+    import { OrbitControls } from 'https://unpkg.com/three/examples/jsm/controls/OrbitControls.js';
+    //import { GLTFLoader } from "{% static 'portfolio/scripts/libs/three/examples/jsm/loaders/GLTFLoader.js' %}"
+    import { GLTFLoader } from 'https://unpkg.com/three/examples/jsm/loaders/GLTFLoader.js';
+    // import { RGBELoader } from "{% static 'portfolio/scripts/libs/three/examples/jsm/loaders/RGBELoader.js' %}";
+    import { RGBELoader } from 'https://unpkg.com/three/examples/jsm/loaders/RGBELoader.js';
+
+
+    var myCanvas = document.getElementById("shader");
+    var width = $(myCanvas).width();//window.innerWidth ;
+    var height = $(myCanvas).height();//window.innerHeight;
+
+    let camera, scene, renderer, model, controls, mixer, circle;
+    let gridHelper;
+    let isAnimating = true;
+    let modelLocation
+    let loader;
+    let animID;
+    let currentRotY;
+    const clock = new THREE.Clock();
+
+    init();
+    render();
+
+    function init() {
+        camera = new THREE.PerspectiveCamera(45, width / height, 0.25, 20);
+        camera.position.set(10, 15, 10);
+
+        scene = new THREE.Scene();
+
+        const geometry = new THREE.CircleGeometry(4, 50);
+        const material = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+        material.side = 2;
+        circle = new THREE.Mesh( geometry, material );
+        scene.add( circle );
+
+        //RENDERER -------------------------------------------------------------------------------------------------
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas: myCanvas });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(width, height);
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1;
+        renderer.outputEncoding = THREE.sRGBEncoding;
+
+        //RSIZE FUNCTION -------------------------------------------------------------------------------------------------
+        window.addEventListener('resize', onWindowResize);
+    }
+
+    function onWindowResize() {
+        var myCanvas = document.getElementById("modelContainer");
+        var width = $(myCanvas).width();//window.innerWidth ;
+        var height = $(myCanvas).height();//window.innerHeight;
+
+
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(width, height);
+
+        render();
+
+    }
+    function animate() {
+        animID = requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    };
+
+
+    function render() {
+        renderer.render(scene, camera);
+    }
+
+</script>

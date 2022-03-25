@@ -23,15 +23,10 @@ def modelling(request):
    context = {
       'nav' : 'modelling',
       'models' : [
-         {'dataName': 'Swiss Knife'  , 'dataModelSource' : '/static/portfolio/models/Swiss_Knife.gltf', 'imgSrc': '/static/portfolio/models/Swiss_Knife.png'},
-         {'dataName': 'Combat Knife' , 'dataModelSource' : '/static/portfolio/models/Combat_Knife.gltf','imgSrc': '/static/portfolio/models/Combat_Knife.png'},
-         {'dataName': 'City House'   , 'dataModelSource' : '/static/portfolio/models/city_house.gltf',  'imgSrc': '/static/portfolio/pictures/icon2.png'},
-         {'dataName': 'Swiss Knife'  , 'dataModelSource' : '/static/portfolio/models/Swiss_Knife.gltf', 'imgSrc': '/static/portfolio/models/Swiss_Knife.png'},
-         {'dataName': 'Combat Knife' , 'dataModelSource' : '/static/portfolio/models/Combat_Knife.gltf','imgSrc': '/static/portfolio/models/Combat_Knife.png'},
-         {'dataName': 'City House'   , 'dataModelSource' : '/static/portfolio/models/city_house.gltf',  'imgSrc': '/static/portfolio/pictures/icon2.png'},
-         {'dataName': 'Swiss Knife'  , 'dataModelSource' : '/static/portfolio/models/Swiss_Knife.gltf', 'imgSrc': '/static/portfolio/models/Swiss_Knife.png'},
-         {'dataName': 'Combat Knife' , 'dataModelSource' : '/static/portfolio/models/Combat_Knife.gltf','imgSrc': '/static/portfolio/models/Combat_Knife.png'},
-         {'dataName': 'City House'   , 'dataModelSource' : '/static/portfolio/models/city_house.gltf',  'imgSrc': '/static/portfolio/pictures/icon2.png'},
+         {'dataName': 'Swiss Knife'    , 'dataModelSource' : '/static/portfolio/models/Swiss_Knife.glb', 'imgSrc': '/static/portfolio/models/Swiss_Knife.png'},
+         {'dataName': 'Combat Knife'   , 'dataModelSource' : '/static/portfolio/models/Combat_Knife.glb','imgSrc': '/static/portfolio/models/Combat_Knife.png'},
+         {'dataName': 'Claymore'       , 'dataModelSource' : '/static/portfolio/models/Claymore.glb'    ,'imgSrc': '/static/portfolio/models/Claymore.png'},
+         {'dataName': 'Space Piggy' , 'dataModelSource' : '/static/portfolio/models/space_pig.glb'   ,'imgSrc': '/static/portfolio/models/Space_Pig.png'},
       ]
    }
 

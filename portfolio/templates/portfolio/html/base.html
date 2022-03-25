@@ -10,6 +10,7 @@
     <script src="https://kit.fontawesome.com/5615ca7e9d.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="{% static 'portfolio/pictures/favicon.png' %}">
     <link rel="stylesheet" href="{% static 'portfolio/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/css/hamburgerButton.css' %}">
     <script src="{% static 'portfolio/scripts/jQuery-3.6.0.js' %}"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
     <script src="{% static 'portfolio/scripts/main.js' %}"></script>
@@ -26,7 +27,8 @@
 
 <body {% block bodybackground %}{% endblock %}>
 
-    {% include 'portfolio//html/stars.html' %} {% include 'portfolio//html/navigation.html' %}
+    {% include 'portfolio//html/stars.html' %} 
+    {% include 'portfolio//html/navigation.html' %}
     <div class="content">
         {% block content %}
     </div>
